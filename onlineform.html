@@ -14,31 +14,90 @@
         .form-outer .main-form{padding:0px;}
         .form-outer .main-form .form-fields{margin:0 0 5px 0;clear:both;overflow:hidden;position:relative;verticle-align:middle;}
         .form-outer .main-form .form-fields label{display:inline-block;margin:0 5px 0 0;padding:0;position:relative;verticle-align:middle;min-width:110px;}
-        .form-outer .main-form .form-fields input:not([type="submit"]){font-family:botplatform-font;display:inline-block;margin:0 0 0 5px;padding:0;position:relative;verticle-align:middle;border:1px solid #000;font-size:16px;line-height:1.25em;padding:2px 10px;width:160px;height:auto;margin:0;color:#000;outline:none;}
-        .form-outer .main-form .form-fields input:not([type="submit"]):focus,
-        .form-outer .main-form .form-fields input:not([type="submit"]):hover{outline:none;}
+        .form-outer .main-form .form-fields input:not([type="button"]){font-family:botplatform-font;display:inline-block;margin:0 0 0 5px;padding:0;position:relative;verticle-align:middle;border:1px solid #000;font-size:16px;line-height:1.25em;padding:2px 10px;width:160px;height:auto;margin:0;color:#000;outline:none;}
+        .form-outer .main-form .form-fields input:not([type="button"]):focus,
+        .form-outer .main-form .form-fields input:not([type="button"]):hover{outline:none;}
         .form-outer .main-form .form-fields.form-field-text{margin:20px 0 10px 0;}
         .form-outer .main-form .form-fields.form-field-text p{margin:0;color:red;text-align:center;}
         .form-outer .main-form .form-fields.form-field-text p a{color:red;}
         .form-outer .main-form .form-fields.form-field-submit{text-align:center;margin-bottom:5px;}
-        .form-outer .main-form .form-fields.form-field-submit input[type="submit"]{font-family:botplatform-font;display:inline-block;margin:0;padding:2px 5px;position:relative;verticle-align:middle;border:1px solid #000;font-size:16px;line-height:1.25em;padding:2px 10px;width:200px;height:auto;margin:0;color:#fff;background-color:#000;}
+        .form-outer .main-form .form-fields.form-field-submit input[type="button"]{font-family:botplatform-font;display:inline-block;margin:0;padding:2px 5px;position:relative;verticle-align:middle;border:1px solid #000;font-size:16px;line-height:1.25em;padding:2px 10px;width:200px;height:auto;margin:0;color:#fff;background-color:#000;}
+        .show {display: block;}
+        .hide {display: none;}
     </style>
   </head>
   <body>
-    <div class="form-outer">
-      <!-- <div class="form-title">
-        <h5>ZALORA <span>INDIA</span></h5>
-      </div> -->
-      <div class="form-text">
-        <p>All our customer service agents are offline now. I am a Bot, your ZALORA virtual assistant. No worries, I will try to help you as much as I can.</p>
+    <section>
+      <div class="form-outer">
+        <!-- <div class="form-title">
+          <h5>ZALORA <span>INDIA</span></h5>
+        </div> -->
+        <div class="form-text">
+          <p>All our customer service agents are offline now. I am a Bot, your ZALORA virtual assistant. No worries, I will try to help you as much as I can.</p>
+        </div>
+        <form class="main-form" action="" method="post">
+          <div class="form-fields form-field-name"><label for="username">Name *</label><input type="text" name="username" id="username" value="" placeholder="enter your name" required/></div>
+          <div class="form-fields form-field-email"><label for="emailaddress">Email</label><input type="email" name="emailaddress" id="emailaddress" value="" placeholder="optional" /></div>
+          <div class="form-fields form-field-ordernumber"><label for="ordernumber">Order Number</label><input type="text" name="ordernumber" id="ordernumber" value="" placeholder="optional" /></div>
+          <div class="form-fields form-field-text"><p>Before you submit the data, this is an act of acceptance to our Privacy Policy; ZALORA will store a record of this chat conversation and other personal data such order numbers, email address, device information and IP <a href="https://www.zalora.com.my/privacy-policy/" target="_blank">here</a>.</p></div>
+          <div class="form-fields form-field-submit"><input type="button" value="Agree and submit" onclick="return details()"></div>
+        </form>
       </div>
-      <form class="main-form" action="index.html" method="post">
-        <div class="form-fields form-field-name"><label for="yourname">Name *</label><input type="text" name="yourname" id="yourname" value="" placeholder="enter your name" /></div>
-        <div class="form-fields form-field-email"><label for="emailaddress">Email</label><input type="email" name="emailaddress" id="emailaddress" value="" placeholder="optional" /></div>
-        <div class="form-fields form-field-ordernumber"><label for="ordernumber">Order Number</label><input type="email" name="ordernumber" id="ordernumber" value="" placeholder="optional" /></div>
-        <div class="form-fields form-field-text"><p>Before you submit the data, this is an act of acceptance to our Privacy Policy; ZALORA will store a record of this chat conversation and other personal data such order numbers, email address, device information and IP <a href="https://www.zalora.com.my/privacy-policy/" target="_blank">here</a>.</p></div>
-        <div class="form-fields form-field-submit"><input type="submit" value="Agree and submit"></div>
-      </form>
-    </div>
+      <div class="hide" id="greeting" style="width: 100%; position: absolute; height: 80%;">
+            <div class="greeting col-lg-12 d-flex justify-content-center align-items-center" style="height: 100%;">
+                <p id="main2" class="">Thank you for the information</p>
+            </div>
+      </div>
+  </section>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/8bbf807456.js" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        let name;
+        let email;
+        let ordernumber;
+        let data = {};
+        // let radioFeedback;
+        // let textareaValue ;
+
+        // var reason = document.getElementsByName("reason");
+
+
+
+
+        function details() {
+            username = document.getElementById('username').value;
+            emailaddress = document.getElementById('emailaddress').value;
+            ordernumber = document.getElementById('ordernumber').value;
+
+            if(username !== ''){
+              console.log(username);
+              console.log(emailaddress);
+              console.log(ordernumber);
+
+              var raw = JSON.stringify({
+                  "details": {
+                  "companyName": "ZALORA",
+                  "username" : username,
+                  "emailaddress" : emailaddress,
+                  "ordernumber" : ordernumber
+                }
+              });
+
+              window.parent.postMessage(JSON.stringify({
+                  event_code: 'ym-client-onlineform-event', data: JSON.stringify({
+                       event: {
+                            code: "feedback",
+                            data: raw,
+                          }
+                  })
+              }), '*');
+
+              $('.form-outer').hide();
+              $('#greeting').show();
+            }
+        }
+
+    </script>
   </body>
 </html>
