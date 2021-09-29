@@ -89,7 +89,6 @@
 
               var raw = JSON.stringify({
                   "details": {
-                  "companyName": "ZALORA",
                   "username" : username,
                   "emailaddress" : emailaddress,
                   "ordernumber" : ordernumber
@@ -97,9 +96,9 @@
               });
 
               window.parent.postMessage(JSON.stringify({
-                  event_code: 'ym-client-onlineform-event', data: JSON.stringify({
+                  event_code: 'ym-client-event', data: JSON.stringify({
                        event: {
-                            code: "feedback",
+                            code: "userdetails-event",
                             data: raw,
                           }
                   })
