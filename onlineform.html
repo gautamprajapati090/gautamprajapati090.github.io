@@ -63,7 +63,19 @@
         // var reason = document.getElementsByName("reason");
 
 
+        $( document ).ready(function() {
+          let searchParams = new URLSearchParams(window.location.search)
+          if(searchParams.has('username') &&  searchParams.has('emailaddress') && searchParams.has('ordernumber')){
+            let username = searchParams.get('username')
+            let emailaddress = searchParams.get('emailaddress')
+            let ordernumber = searchParams.get('ordernumber')
+            // console.log( param );
+            document.getElementById('username').value = username;
+            document.getElementById('emailaddress').value = emailaddress;
+            document.getElementById('ordernumber').value = ordernumber;
+          }
 
+        });
 
         function details() {
             username = document.getElementById('username').value;
@@ -77,6 +89,7 @@
 
               var raw = JSON.stringify({
                   "details": {
+                  "companyName": "ZALORA",
                   "username" : username,
                   "emailaddress" : emailaddress,
                   "ordernumber" : ordernumber
@@ -84,9 +97,9 @@
               });
 
               window.parent.postMessage(JSON.stringify({
-                  event_code: 'ym-client-event', data: JSON.stringify({
+                  event_code: 'ym-client-onlineform-event', data: JSON.stringify({
                        event: {
-                            code: "userdetails-event",
+                            code: "feedback",
                             data: raw,
                           }
                   })
